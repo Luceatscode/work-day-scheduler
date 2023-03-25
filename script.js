@@ -4,9 +4,17 @@
 $(function () {
   const today = dayjs()
   // const hour = 12 
-  // change number on line 6 to test functionality of calender for dev testing
+  // change number on line 6 to test functionality of calendar for dev testing
   const hour = today.hour()
-  const minute = today.minute()
+  const dayOfTheWeek = today.format('dddd')
+  const month = today.format('MMMM')
+  const date = today.format('DD')
+  const year = today.format('YYYY')
+
+  const currentDayElement = document.getElementById('currentDay')
+  const phrase = `${dayOfTheWeek} - ${month} ${date}, ${year}`
+  currentDayElement.innerHTML = phrase
+  
 
   const timeBlocks = document.querySelectorAll('.time-block')
   timeBlocks.forEach(function(item){
@@ -25,6 +33,9 @@ $(function () {
       item.classList.add('future')
     }
   })
+
+
+
 });
 // TODO: Add a listener for click events on the save button. This code should
 // use the id in the containing time-block as a key to save the user input in
