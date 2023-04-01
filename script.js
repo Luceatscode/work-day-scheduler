@@ -18,6 +18,21 @@ $(function () {
 
   const timeBlocks = document.querySelectorAll('.time-block')
   timeBlocks.forEach(function(item){
+    console.log(item.id, 'starting a new row')
+   console.log(item) 
+   const saveButton = item.getElementsByTagName('button')[0]
+    console.log(saveButton)
+
+    const saveTextArea = item.getElementsByTagName('textarea')[0]
+    // console.log(saveTextArea.value)
+
+    saveButton.addEventListener('click', function(event){
+      localStorage.setItem(item.id, saveTextArea.value);
+      console.log(saveTextArea.value)
+
+
+
+    })
 
     const rowHour = Number(item.id.split('-')[1])
 
@@ -33,10 +48,19 @@ $(function () {
       item.classList.add('future')
     }
   })
-
-
-
 });
+
+document.querySelectorAll('.saveBtn').forEach(function(buttonEl) {
+  buttonEl.addEventListener('click', function(){
+
+  })
+})
+
+
+
+
+
+
 // TODO: Add a listener for click events on the save button. This code should
 // use the id in the containing time-block as a key to save the user input in
 // local storage. HINT: What does `this` reference in the click listener
